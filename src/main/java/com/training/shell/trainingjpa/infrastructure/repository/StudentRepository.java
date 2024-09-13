@@ -1,5 +1,6 @@
 package com.training.shell.trainingjpa.infrastructure.repository;
 
+import com.training.shell.trainingjpa.domain.dto.StudentCourseDTO;
 import com.training.shell.trainingjpa.domain.dto.StudentNameDTO;
 import com.training.shell.trainingjpa.infrastructure.model.StudentEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -17,6 +18,12 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 
     @Query("SELECT s FROM StudentEntity s")
     List<StudentEntity> findAll();
+
+    @Query("SELECT s FROM StudentEntity s JOIN FETCH s.course c JOIN FETCH c.university")
+    List<StudentEntity> findAllFullFetch();
+
+    @Query("SELECT new com.training.shell.trainingjpa.domain.dto.StudentCourseDTO(s.name, s.course) FROM StudentEntity s JOIN FETCH s.course c")
+    List<StudentCourseDTO> findAllFullFetch2();
 
     @Query("SELECT s FROM StudentEntity s WHERE s.name LIKE %:name%")
     List<StudentEntity> findByName(@Param("name") String name);

@@ -2,3 +2,5 @@
 spring:
   application:
     name: training-jpa
+server:
+  port: 9001

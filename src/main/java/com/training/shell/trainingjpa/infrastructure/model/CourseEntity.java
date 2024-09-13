@@ -1,6 +1,7 @@
 package com.training.shell.trainingjpa.infrastructure.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -22,4 +23,12 @@ public class CourseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "university_id", referencedColumnName = "id")
     private UniversityEntity university;
+
+    public CourseEntity(long id) {
+        this.id = id;
+    }
+
+    public CourseEntity() {
+
+    }
 }

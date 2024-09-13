@@ -13,4 +13,11 @@ public class UniversityEntity {
     private long id;
 
     private String name;
+
+    public UniversityEntity() {
+    }
+
+    public UniversityEntity(long id) {
+        this.id = id;
+    }
 }
