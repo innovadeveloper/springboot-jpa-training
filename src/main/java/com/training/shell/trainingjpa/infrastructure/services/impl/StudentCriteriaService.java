@@ -1,5 +1,6 @@
 package com.training.shell.trainingjpa.infrastructure.services.impl;
 
+import com.training.shell.trainingjpa.domain.dto.StudentNameDTO;
 import com.training.shell.trainingjpa.infrastructure.model.CourseEntity;
 import com.training.shell.trainingjpa.infrastructure.model.StudentEntity;
 import jakarta.persistence.EntityManager;
@@ -45,7 +46,6 @@ public class StudentCriteriaService {
      */
     public List<StudentEntity> searchAllStudentsByName(String letterInName){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-
         CriteriaQuery<StudentEntity> criteriaQuery = builder.createQuery(StudentEntity.class);
         Root<StudentEntity> student = criteriaQuery.from(StudentEntity.class);
         student.fetch("course", JoinType.INNER); // 'course' es el atributo de StudentEntity

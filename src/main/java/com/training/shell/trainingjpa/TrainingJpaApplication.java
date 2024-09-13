@@ -1,5 +1,6 @@
 package com.training.shell.trainingjpa;
 
+import com.training.shell.trainingjpa.domain.dto.StudentNameDTO;
 import com.training.shell.trainingjpa.infrastructure.model.CourseEntity;
 import com.training.shell.trainingjpa.infrastructure.model.StudentEntity;
 import com.training.shell.trainingjpa.infrastructure.model.UniversityEntity;
@@ -77,5 +78,8 @@ public class TrainingJpaApplication implements ApplicationRunner {
         List<StudentEntity> studentEntityWithCriteriaNameList= studentCriteriaService.searchAllStudentsByName("s");
 
         log.info("result: {}", studentEntityListByName.size());
+
+        List<StudentNameDTO> studentEntityJPAProjectionList = studentRepository.findCustomStudentByName("a", "Harvard University");
+        log.info("result: {}", studentEntityListFullByName.size());
     }
 }
