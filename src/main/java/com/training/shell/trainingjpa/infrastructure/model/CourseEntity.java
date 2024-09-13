@@ -19,7 +19,7 @@ public class CourseEntity {
      * name = "university_id": Especifica el nombre de la columna en la tabla Courses que se utiliza para la clave externa.
      * referencedColumnName = "id": Especifica el nombre de la columna en la tabla University que se está referenciando para la relación.
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "university_id", referencedColumnName = "id")
     private UniversityEntity university;
 }

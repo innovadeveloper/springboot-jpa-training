@@ -4,6 +4,7 @@ import com.training.shell.trainingjpa.infrastructure.model.CourseEntity;
 import com.training.shell.trainingjpa.infrastructure.model.StudentEntity;
 import com.training.shell.trainingjpa.infrastructure.model.UniversityEntity;
 import com.training.shell.trainingjpa.infrastructure.repository.StudentRepository;
+import com.training.shell.trainingjpa.infrastructure.services.impl.StudentCriteriaService;
 import com.training.shell.trainingjpa.infrastructure.services.impl.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class TrainingJpaApplication implements ApplicationRunner {
 
     private final StudentRepository studentRepository;
     private final StudentService studentService;
+    private final StudentCriteriaService studentCriteriaService;
 
     public static void main(String[] args) {
         SpringApplication.run(TrainingJpaApplication.class, args);
@@ -36,6 +38,7 @@ public class TrainingJpaApplication implements ApplicationRunner {
         List<StudentEntity> studentEntityListByName = studentRepository.findByName("s");
         List<StudentEntity> studentEntityListFullByName = studentRepository.findByNameFullFetch("pedro");
 
+        /*
         UniversityEntity university = new UniversityEntity();
         university.setName("upn");
 
@@ -61,13 +64,18 @@ public class TrainingJpaApplication implements ApplicationRunner {
         firstStudentEntitySuccess.setName("pedro A" + new Date().getSeconds());
         firstStudentEntitySuccess.setCourse(courseEntitySuccess);
         firstStudentEntitySuccess.setUniversity(universitySuccess);
+        */
 //        ##########################################
-        try {
-            studentService.createNewStudent(firstStudentEntitySuccess, firstStudentEntity);
-            log.info("success ");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+//        try {
+//            studentService.createNewStudent(firstStudentEntitySuccess, firstStudentEntity);
+//            log.info("success ");
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+
+        List<StudentEntity> studentEntityWithCriteriaList= studentCriteriaService.searchStudentWithCourse("Computer Science");
+        List<StudentEntity> studentEntityWithCriteriaNameList= studentCriteriaService.searchAllStudentsByName("s");
+
         log.info("result: {}", studentEntityListByName.size());
     }
 }
