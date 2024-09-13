@@ -17,13 +17,10 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
     @Query("SELECT s FROM StudentEntity s")
     List<StudentEntity> findAll();
 
-//    @EntityGraph(attributePaths = "courses")
-//@Query("SELECT s FROM StudentEntity s JOIN FETCH s.course WHERE s.name LIKE %:name%")
     @Query("SELECT s FROM StudentEntity s WHERE s.name LIKE %:name%")
     List<StudentEntity> findByName(@Param("name") String name);
 
     @Query("SELECT s FROM StudentEntity s JOIN FETCH s.course WHERE s.name LIKE %:name%")
     List<StudentEntity> findByNameFullFetch(@Param("name") String name);
-
 
 }
