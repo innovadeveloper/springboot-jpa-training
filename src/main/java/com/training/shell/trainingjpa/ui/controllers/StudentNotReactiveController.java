@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+// http://localhost:9001/students_not_reactive/fetch
 @AllArgsConstructor
 @RestController
 @RequestMapping("/students_not_reactive")
