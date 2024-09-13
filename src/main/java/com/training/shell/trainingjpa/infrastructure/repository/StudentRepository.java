@@ -22,7 +22,13 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
     @Query("SELECT s FROM StudentEntity s JOIN FETCH s.course c JOIN FETCH c.university")
     List<StudentEntity> findAllFullFetch();
 
-    @Query("SELECT new com.training.shell.trainingjpa.domain.dto.StudentCourseDTO(s.name, s.course) FROM StudentEntity s JOIN FETCH s.course c")
+//    @Query("SELECT new com.training.shell.trainingjpa.domain.dto.StudentCourseDTO(s.name, s.course) FROM StudentEntity s JOIN FETCH s.course c JOIN FETCH c.university")
+
+
+//    @Query("SELECT new com.training.shell.trainingjpa.domain.dto.StudentCourseDTO(s.name, " +
+//            "new com.training.shell.trainingjpa.domain.dto.CourseDTO(c.id, c.name)) " +
+//            "FROM StudentEntity s JOIN s.course c")
+    @Query("SELECT new com.training.shell.trainingjpa.domain.dto.StudentCourseDTO(s.name, c.name) FROM StudentEntity s JOIN s.course c")
     List<StudentCourseDTO> findAllFullFetch2();
 
     @Query("SELECT s FROM StudentEntity s WHERE s.name LIKE %:name%")

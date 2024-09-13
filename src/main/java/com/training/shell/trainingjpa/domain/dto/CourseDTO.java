@@ -1,12 +1,10 @@
 package com.training.shell.trainingjpa.domain.dto;
 
-import com.training.shell.trainingjpa.infrastructure.model.CourseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class StudentCourseDTO {
+public class CourseDTO {
     private String name;
-    private String courseName;
 }
