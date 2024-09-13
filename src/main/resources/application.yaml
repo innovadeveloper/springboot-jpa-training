@@ -1,0 +1,4 @@
+#spring.application.name=training-jpa
+spring:
+  application:
+    name: training-jpa
